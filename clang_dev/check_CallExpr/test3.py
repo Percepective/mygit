@@ -1,6 +1,8 @@
 import clang.cindex
+import sys
 #clang.cindex.Config.set_library_path('')
 
+error_flag = 0
 unique_location = set()
 
 def get_location(node):
@@ -19,6 +21,8 @@ def printASTNode(node, level, parent, func_name, result_type):
         unique_location.add(loc)
         if is_valid(node, func_name) or is_valid(parent, func_name): return
         print "Error Call_Expression"
+	global error_flag 
+	error_flag = 1
         print "Type:(%s)" %(node.kind)
         print "Name:(%s)" %(node.spelling)
         for t in node.get_tokens():
@@ -40,3 +44,11 @@ def Check_CallExpr(file_name, func_name, result_type):
     translationUnit = index.parse(file_name)
     rootNode = translationUnit.cursor
     traverseAST(rootNode, 0, None, func_name, result_type)
+
+class CallExprException(Exception) :
+	pass
+
+Check_CallExpr(sys.argv[1], sys.argv[2], sys.argv[3])
+if error_flag == 1:
+	raise CallExprException
+	
