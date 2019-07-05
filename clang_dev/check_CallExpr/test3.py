@@ -1,6 +1,10 @@
 import clang.cindex
 import sys
-#clang.cindex.Config.set_library_path('')
+clang.cindex.Config.set_library_path(sys.argv[4])
+lib = sys.argv[5]
+args = ['-I{}'.format(lib)]
+
+
 
 error_flag = 0
 unique_location = set()
@@ -39,16 +43,16 @@ def traverseAST(node, level, parent, func_name, result_type):
             traverseAST(childNode, level, node, func_name ,result_type)
         level = level - 1
 
-def Check_CallExpr(file_name, func_name, result_type):
-    index = clang.cindex.Index.create()
-    translationUnit = index.parse(file_name)
-    rootNode = translationUnit.cursor
-    traverseAST(rootNode, 0, None, func_name, result_type)
+#def Check_CallExpr(file_name, func_name, result_type):
+index = clang.cindex.Index.create()
+translationUnit = index.parse(sys.argv[1], args = args)
+rootNode = translationUnit.cursor
+traverseAST(rootNode, 0, None, sys.argv[2], sys.argv[3])
 
 class CallExprException(Exception) :
 	pass
 
-Check_CallExpr(sys.argv[1], sys.argv[2], sys.argv[3])
+#Check_CallExpr(sys.argv[1], sys.argv[2], sys.argv[3])
 if error_flag == 1:
 	raise CallExprException
 	
