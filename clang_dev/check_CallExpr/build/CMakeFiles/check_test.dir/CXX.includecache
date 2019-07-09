@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/a.h
+
+/mnt/c/Users/oneflow/mycode/mygit/clang_dev/check_CallExpr/source_file/test1.cpp
+functional
+-
+a.h
+/mnt/c/Users/oneflow/mycode/mygit/clang_dev/check_CallExpr/source_file/a.h
+

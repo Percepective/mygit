@@ -1,7 +1,7 @@
 import clang.cindex
 import sys
-clang.cindex.Config.set_library_path(sys.argv[4])
-lib = sys.argv[5]
+#clang.cindex.Config.set_library_path(sys.argv[4])
+lib = sys.argv[4]
 args = ['-I{}'.format(lib)]
 
 
@@ -24,14 +24,14 @@ def printASTNode(node, level, parent, func_name, result_type):
     if node.kind == clang.cindex.CursorKind.CALL_EXPR and node.type.spelling.startswith(result_type) and loc not in unique_location:
         unique_location.add(loc)
         if is_valid(node, func_name) or is_valid(parent, func_name): return
-        print "Error Call_Expression"
+        print "Error Call_Expression: the function which returns %s must be wrapped in function: %s." %(result_type, func_name)
 	global error_flag 
 	error_flag = 1
-        print "Type:(%s)" %(node.kind)
-        print "Name:(%s)" %(node.spelling)
+        #print "Type:(%s)" %(node.kind)
+        #print "Name:(%s)" %(node.spelling)
         for t in node.get_tokens():
             print t.location
-            print "==========="
+            print
             break
 
 def traverseAST(node, level, parent, func_name, result_type):
