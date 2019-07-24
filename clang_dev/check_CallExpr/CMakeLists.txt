@@ -2,13 +2,14 @@ cmake_minimum_required(VERSION 3.9)
 project(check_test)
 
 #set(CMAKE_CXX_STANDARD 11)
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake-modules/)
+#list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake-modules/)
 #set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake-modules/")
-find_package(LibClang REQUIRED)
+#find_package(LibClang REQUIRED)
 message("----------------")
-message(${LIBCLANG_LIBRARY})
+#message(${LIBCLANG_LIBRARY})
 message("----------------")
 set(SOURCE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/source_file")
+message(${PYTHON_EXECUTABLE})
 
 #设置检错脚本参数
 
@@ -33,7 +34,7 @@ add_custom_target(run_check)
 
 foreach(source_file ${oneflow_all_src})
 	add_custom_command(TARGET run_check PRE_BUILD
-	COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test3.py ${source_file} ${func_name_to_be_checked} ${return_type_to_be_checked} ${include_dir}
+	COMMAND /usr/bin/python2.7  ${CMAKE_CURRENT_SOURCE_DIR}/test3.py ${source_file} ${func_name_to_be_checked} ${return_type_to_be_checked} ${include_dir}
 	COMMENT "Checking...${source_file}"
 	)
 endforeach()

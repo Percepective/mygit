@@ -191,10 +191,7 @@ LIBCLANG_LIBDIR:STRING=/usr/lib/llvm-6.0/lib
 LIBCLANG_LIBRARY:FILEPATH=/usr/lib/llvm-6.0/lib/libclang.so
 
 //Path to a program.
-LIBCLANG_LLVM_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/llvm-config-6.0
-
-//The directory containing a CMake configuration file for LibClang.
-LibClang_DIR:PATH=LibClang_DIR-NOTFOUND
+LIBCLANG_LLVM_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/llvm-config
 
 //Path to a program.
 PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2.7
