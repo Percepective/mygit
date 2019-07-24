@@ -1,4 +1,0 @@
-/mnt/c/Users/oneflow/mycode/mygit/clang_dev/check_CallExpr/build/CMakeFiles/rebuild_cache.dir
-/mnt/c/Users/oneflow/mycode/mygit/clang_dev/check_CallExpr/build/CMakeFiles/edit_cache.dir
-/mnt/c/Users/oneflow/mycode/mygit/clang_dev/check_CallExpr/build/CMakeFiles/check_test.dir
-/mnt/c/Users/oneflow/mycode/mygit/clang_dev/check_CallExpr/build/CMakeFiles/run_check.dir
